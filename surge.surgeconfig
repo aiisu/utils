@@ -1,0 +1,19 @@
+[General]
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, 127.0.0.1, localhost, *.local
+proxy-test-url = http://baidu.com/
+test-timeout = 5
+
+[Proxy]
+China = ss, 47.108.159.83, 8488, encrypt-method=chacha20-ietf-poly1305, password=noneedtovpn, udp-relay=true, tfo=true
+
+[Proxy Group]
+ZHP = url-test, China, url=http://baidu.com/
+FG = fallback, DIRECT, url=http://baidu.com/
+
+[Rule]
+DOMAIN-KEYWORD,bilibili.com,ZHP
+DOMAIN-KEYWORD,l.qq.com,ZHP
+DOMAIN-KEYWORD,video.qq.com,ZHP
+DOMAIN-KEYWORD,v.qq.com,ZHP,notification-text="vqq"
+DOMAIN-KEYWORD,iqiyi.com,ZHP
+FINAL,DIRECT
